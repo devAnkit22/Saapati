@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saapati – Authentic Assam Tea Direct from Namrup</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navigation Header -->
+<header class="navbar">
+  <div class="container">
+    <div class="logo">
+      <img src="images/saapati-logo.svg" alt="Saapati Logo" class="logo-image">
+    </div>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#why-saapati">Why Saapati</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#about">About Us</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="cart-icon" onclick="toggleCart()">
+      <span>🛒</span>
+      <span class="cart-count" id="cart-count">0</span>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+  <div class="hero-video">
+    <video autoplay muted loop playsinline>
+      <source src="videos/IMG_2534.MOV" type="video/quicktime">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="hero-text">
+      <h1>Saapati</h1>
+      <p class="tagline">From Assam to Your Cup</p>
+      <p class="subtitle">Pure Assam Tea. Freshly sourced. Authentically crafted.</p>
+      <p class="description">Direct from Namrup gardens. No middlemen. No artificial flavors. Just authentic, fresh chai.</p>
+      <button class="cta-button" onclick="document.getElementById('shop').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+      <div class="trust-badge">✓ 100% Fresh | ✓ Farm to Cup | ✓ Free Shipping</div>
+    </div>
+    <div class="hero-image">
+      <img src="images/remvoebg.png" alt="Saapati Assam Tea Package">
+    </div>
+  </div>
+</section>
+
+<!-- Shop Products Section -->
+<section class="shop" id="shop">
+  <div class="container">
+    <h2>Our Flavours</h2>
+    <p class="section-subtitle">Authentic Assam tea blends crafted for every chai lover</p>
+    
+    <!-- Filter Section -->
+    <div class="filter-section">
+      <button class="filter-btn active" onclick="filterProducts(event, 'all')">All Teas</button>
+      <button class="filter-btn" onclick="filterProducts(event, 'spiced')">Spiced</button>
+      <button class="filter-btn" onclick="filterProducts(event, 'classic')">Classic</button>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid" id="products-grid">
+      <!-- Adrak Chai -->
+      <div class="product-card" data-category="spiced">
+        <div class="product-image">
+          <img src="images/adrak-chai.svg" alt="Adrak Chai">
+        </div>
+        <h3>Adrak Chai</h3>
+        <p class="product-subtitle">Bold ginger Assam blend</p>
+        <div class="product-features">
+          <span>✓ Refreshing ginger kick</span>
+          <span>✓ Warm & invigorating</span>
+          <span>✓ Fresh Assam leaves</span>
+        </div>
+        <div class="price-tag">Starting at ₹399</div>
+        <div class="product-sizes">
+          <select class="size-select" onchange="updatePrice(this)">
+            <option value="">Select Size</option>
+            <option value="250g-399">250g - ₹399</option>
+            <option value="750g-1099">750g - ₹1,099</option>
+          </select>
+        </div>
+        <button class="add-to-cart" onclick="addToCart('Adrak Chai', this)">Add to Cart</button>
+      </div>
+
+      <!-- Elaichi Chai -->
+      <div class="product-card" data-category="spiced">
+        <div class="product-image">
+          <img src="images/elaichi-chai.svg" alt="Elaichi Chai">
+        </div>
+        <h3>Elaichi Chai</h3>
+        <p class="product-subtitle">Aromatic cardamom Assam</p>
+        <div class="product-features">
+          <span>✓ Natural cardamom notes</span>
+          <span>✓ Soothing aroma</span>
+          <span>✓ Fresh Assam flavor</span>
+        </div>
+        <div class="price-tag">Starting at ₹429</div>
+        <div class="product-sizes">
+          <select class="size-select" onchange="updatePrice(this)">
+            <option value="">Select Size</option>
+            <option value="250g-429">250g - ₹429</option>
+            <option value="750g-1199">750g - ₹1,199</option>
+          </select>
+        </div>
+        <button class="add-to-cart" onclick="addToCart('Elaichi Chai', this)">Add to Cart</button>
+      </div>
+
+      <!-- Masala Chai -->
+      <div class="product-card" data-category="spiced">
+        <div class="product-image">
+          <img src="images/masala-chai.svg" alt="Masala Chai">
+        </div>
+        <h3>Masala Chai</h3>
+        <p class="product-subtitle">Festive Assam spice blend</p>
+        <div class="product-features">
+          <span>✓ 5 premium spices</span>
+          <span>✓ Deep, rich flavor</span>
+          <span>✓ Warming chai comfort</span>
+        </div>
+        <div class="price-tag">Starting at ₹459</div>
+        <div class="product-sizes">
+          <select class="size-select" onchange="updatePrice(this)">
+            <option value="">Select Size</option>
+            <option value="250g-459">250g - ₹459</option>
+            <option value="750g-1299">750g - ₹1,299</option>
+          </select>
+        </div>
+        <button class="add-to-cart" onclick="addToCart('Masala Chai', this)">Add to Cart</button>
+      </div>
+
+      <!-- Adrak Elaichi Chai -->
+      <div class="product-card" data-category="spiced">
+        <div class="product-image">
+          <img src="images/adrak-elaichi-chai.svg" alt="Adrak Elaichi Chai">
+        </div>
+        <h3>Adrak Elaichi Chai</h3>
+        <p class="product-subtitle">Ginger-cardamom Assam</p>
+        <div class="product-features">
+          <span>✓ Warm spice balance</span>
+          <span>✓ Smooth Assam body</span>
+          <span>✓ Classic chai taste</span>
+        </div>
+        <div class="price-tag">Starting at ₹469</div>
+        <div class="product-sizes">
+          <select class="size-select" onchange="updatePrice(this)">
+            <option value="">Select Size</option>
+            <option value="250g-469">250g - ₹469</option>
+            <option value="750g-1349">750g - ₹1,349</option>
+          </select>
+        </div>
+        <button class="add-to-cart" onclick="addToCart('Adrak Elaichi Chai', this)">Add to Cart</button>
+      </div>
+
+      <!-- Plain Tea -->
+      <div class="product-card" data-category="classic">
+        <div class="product-image">
+          <img src="images/plain-tea.svg" alt="Plain Tea">
+        </div>
+        <h3>Plain Tea</h3>
+        <p class="product-subtitle">Pure Assam black tea</p>
+        <div class="product-features">
+          <span>✓ Strong & clear cup</span>
+          <span>✓ Everyday Assam classic</span>
+          <span>✓ Fresh leaf quality</span>
+        </div>
+        <div class="price-tag">Starting at ₹349</div>
+        <div class="product-sizes">
+          <select class="size-select" onchange="updatePrice(this)">
+            <option value="">Select Size</option>
+            <option value="250g-349">250g - ₹349</option>
+            <option value="750g-999">750g - ₹999</option>
+          </select>
+        </div>
+        <button class="add-to-cart" onclick="addToCart('Plain Tea', this)">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Saapati Section -->
+<section class="why-saapati" id="why-saapati">
+  <div class="container">
+    <h2>Why Choose Saapati</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🌱</div>
+        <h3>Direct from Namrup</h3>
+        <p>Sourced directly from authentic gardens in Namrup, Assam. No warehousing, no middlemen.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Premium Freshness</h3>
+        <p>Hand-picked leaves sealed at source. Delivered fresh within 3-5 days to your doorstep.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>35% More Cups</h3>
+        <p>Saapati tea is so strong you need 35% less per cup. One package lasts longer.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✨</div>
+        <h3>No Artificial Additives</h3>
+        <p>100% pure Assam tea. No artificial flavors, no shortcuts, no compromises.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚚</div>
+        <h3>Free Shipping</h3>
+        <p>Free delivery across India on all orders. Cash on delivery available.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>Quality Assured</h3>
+        <p>100K+ chai lovers trust Saapati. 5-star reviews from verified buyers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Brewing Instructions Section -->
+<section class="brewing">
+  <div class="container">
+    <h2>Perfect Cup Guide</h2>
+    <p class="section-subtitle">Learn how to brew the perfect cup of Saapati chai</p>
+    <div class="brewing-steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Boil Water</h3>
+        <p>Heat 1 cup of filtered water in a pan until it boils vigorously.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Add Tea</h3>
+        <p>Add half a teaspoon (2.5g) of Saapati chai to the boiling water.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Add Milk</h3>
+        <p>Pour in half a cup of milk. Add sugar or sweetener to taste.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Simmer</h3>
+        <p>Let it simmer for 2-3 minutes. Allow the flavors to blend beautifully.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">5</div>
+        <h3>Strain & Enjoy</h3>
+        <p>Strain into your favorite cup and enjoy the fresh, authentic taste of Assam.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Story Section -->
+<section class="story" id="about">
+  <div class="container story-header">
+    <p class="eyebrow">I Wanted to Bring You the Tea We Drink Back Home</p>
+    <h2>Our story from Assam to your cup</h2>
+  </div>
+  <div class="container story-content">
+    <div class="story-text">
+      <div class="story-block">
+        <h3>I Wanted to Bring You the Tea We Drink Back Home</h3>
+        <p>I grew up in Namrup, Assam — surrounded by tea gardens where chai is part of everyday life. When I moved to Chandigarh, I searched for that same comfort in tea. But what I found was disappointing.</p>
+      </div>
+      <div class="story-block">
+        <h3>The Problem with Tea Today</h3>
+        <p>The tea available here had no strength, no color, and no real taste. It felt like people weren’t drinking Assam tea — they were drinking what was left after the good tea was taken away. That’s when I knew something had to change.</p>
+      </div>
+      <div class="story-block">
+        <h3>So I Started Saapati</h3>
+        <p>I wanted to bring the real taste of Assam to people. Strong, fresh, full-bodied chai just like we drink at home. No mixing. No dilution. Just honest tea.</p>
+      </div>
+      <div class="story-block">
+        <h3>What We Believe</h3>
+        <ul class="belief-list">
+          <li>Purity First — 100% authentic Assam tea</li>
+          <li>Fresh Delivery — Direct from source within days</li>
+          <li>Honest Seasons — Only monsoon harvest (March–November)</li>
+          <li>No stale tea. No shortcuts.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="story-image">
+      <img src="images/founder.jpeg" alt="Founder of Saapati">
+    </div>
+  </div>
+</section>
+
+<!-- Comparison Section -->
+<section class="comparison">
+  <div class="container">
+    <h2>Saapati vs Other Brands</h2>
+    <div class="comparison-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Other Brands</th>
+            <th>Saapati</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Freshness</td>
+            <td>❌ Months old stock</td>
+            <td>✅ Fresh from gardens</td>
+          </tr>
+          <tr>
+            <td>Cup Strength</td>
+            <td>❌ Weak, needs more tea</td>
+            <td>✅ Strong flavor per cup</td>
+          </tr>
+          <tr>
+            <td>Cost per Cup</td>
+            <td>❌ ₹2-3 per cup</td>
+            <td>✅ ₹1-1.50 per cup</td>
+          </tr>
+          <tr>
+            <td>Artificial Additives</td>
+            <td>❌ Contains artificial flavors</td>
+            <td>✅ 100% pure Assam</td>
+          </tr>
+          <tr>
+            <td>Cups per Package</td>
+            <td>❌ 50-70 cups</td>
+            <td>✅ 150+ cups</td>
+          </tr>
+          <tr>
+            <td>Shelf Life</td>
+            <td>❌ Stale, loses quality</td>
+            <td>✅ Stays fresh longer</td>
+          </tr>
+          <tr>
+            <td>Direct from Gardens</td>
+            <td>❌ Multiple middlemen</td>
+            <td>✅ Farm to Cup</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews Section -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <h2>Loved by Chai Enthusiasts</h2>
+    <p class="section-subtitle">100K+ happy customers across India</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"I was skeptical about online tea orders, but this is incredibly fresh! The taste is authentic, and the packaging is excellent. Highly recommend!"</p>
+        <p class="reviewer-name">- Priya Sharma</p>
+        <p class="verified">✓ Verified Buyer</p>
+      </div>
+      <div class="review-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"One package lasts so much longer than regular chai. Strong flavor, no bitterness. My family loves it. We're regular customers now!"</p>
+        <p class="reviewer-name">- Rajesh Kumar</p>
+        <p class="verified">✓ Verified Buyer</p>
+      </div>
+      <div class="review-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Finally, fresh Assam chai at home! The aroma is incredible. No artificial taste whatsoever. Worth every rupee!"</p>
+        <p class="reviewer-name">- Ananya Das</p>
+        <p class="verified">✓ Verified Buyer</p>
+      </div>
+      <div class="review-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"The masala blend is fantastic. I've tried multiple tea brands, but Saapati is the best. Fast delivery too!"</p>
+        <p class="reviewer-name">- Vikram Singh</p>
+        <p class="verified">✓ Verified Buyer</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq" id="faq">
+  <div class="container faq-top">
+    <span class="faq-pill">FAQs</span>
+    <h2>Frequently Asked Questions<br>Everything You Need to Know</h2>
+  </div>
+  <div class="container faq-list">
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFAQ(this)">
+        <span class="faq-text">How long will my order take to arrive?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        Orders typically arrive within 3-5 business days across India. We offer free shipping on all orders and cash on delivery options.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFAQ(this)">
+        <span class="faq-text">Do I need to share an OTP for delivery?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        No, our delivery partners do not ask for OTPs. Your order is verified through our system and delivered safely.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFAQ(this)">
+        <span class="faq-text">Do you ship across all of India?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        Yes, we ship across India with free delivery on all orders. Delivery times may vary by region.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFAQ(this)">
+        <span class="faq-text">What makes Saapati tea different from other tea brands?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        Saapati tea is direct from Assam gardens, fresh, strong, and free of artificial flavors. We focus on real taste, not fillers or stale stock.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFAQ(this)">
+        <span class="faq-text">Is Saapati tea diabetic-friendly?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        Our tea is 100% natural Assam tea. It contains no added sugar, so you can enjoy it with your preferred sweetener or milk choice.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cart Modal -->
+<div class="cart-modal" id="cart-modal">
+  <div class="cart-content">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="close-cart" onclick="toggleCart()">×</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <p class="empty-cart">Your cart is empty</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <strong>Total:</strong>
+        <strong id="cart-total">₹0</strong>
+      </div>
+      <button class="checkout-button" onclick="checkout()">Proceed to Checkout</button>
+      <p class="free-shipping">✓ Free shipping on all orders</p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h4>About Saapati</h4>
+        <p>Fresh Assam tea directly from Namrup gardens. No middlemen. Pure, authentic, delicious.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="#why-saapati">Why Saapati</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Customer Support</h4>
+        <ul>
+          <li>Email: hello@saapati.com</li>
+          <li>WhatsApp: +91 XXXXX XXXXX</li>
+          <li>Shipping Info</li>
+          <li>Return Policy</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect With Us</h4>
+        <div class="social-links">
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+          <a href="#">Twitter</a>
+          <a href="#">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Saapati. All rights reserved. | <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+let cart = JSON.parse(localStorage.getItem('saapatiCart')) || [];
+
+function addToCart(productName, button) {
+  const select = button.previousElementSibling.querySelector('.size-select');
+  const sizeValue = select.value;
+  
+  if (!sizeValue) {
+    alert('Please select a size');
+    return;
+  }
+  
+  const [size, price] = sizeValue.split('-');
+  const priceNum = parseInt(price);
+  
+  const existingItem = cart.find(item => item.name === productName && item.size === size);
+  
+  if (existingItem) {
+    existingItem.quantity++;
+  } else {
+    cart.push({
+      name: productName,
+      size: size,
+      price: priceNum,
+      quantity: 1
+    });
+  }
+  
+  localStorage.setItem('saapatiCart', JSON.stringify(cart));
+  updateCartUI();
+  alert(`${productName} (${size}) added to cart!`);
+  select.value = '';
+  const card = button.closest('.product-card');
+  const priceTag = card.querySelector('.price-tag');
+  if (priceTag) priceTag.textContent = 'Starting at ₹' + Number(price).toLocaleString();
+}
+
+function updatePrice(select) {
+  const priceTag = select.closest('.product-card').querySelector('.price-tag');
+  const value = select.value;
+  if (!value) {
+    priceTag.textContent = 'Choose size to view price';
+    return;
+  }
+  const [, price] = value.split('-');
+  priceTag.textContent = '₹' + Number(price).toLocaleString();
+}
+
+function updateCartUI() {
+  document.getElementById('cart-count').textContent = cart.length;
+  
+  const cartItems = document.getElementById('cart-items');
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
+    document.getElementById('cart-total').textContent = '₹0';
+    return;
+  }
+  
+  let total = 0;
+  cartItems.innerHTML = cart.map((item, index) => {
+    total += item.price * item.quantity;
+    return `
+      <div class="cart-item">
+        <div class="item-info">
+          <strong>${item.name}</strong>
+          <p>${item.size} × ${item.quantity}</p>
+        </div>
+        <div class="item-price">₹${(item.price * item.quantity).toLocaleString()}</div>
+        <button class="remove-item" onclick="removeFromCart(${index})">Remove</button>
+      </div>
+    `;
+  }).join('');
+  
+  document.getElementById('cart-total').textContent = '₹' + total.toLocaleString();
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  localStorage.setItem('saapatiCart', JSON.stringify(cart));
+  updateCartUI();
+}
+
+function toggleCart() {
+  document.getElementById('cart-modal').classList.toggle('active');
+}
+
+function checkout() {
+  if (cart.length === 0) {
+    alert('Your cart is empty!');
+    return;
+  }
+  alert('Thank you for your order! Checkout functionality coming soon.');
+}
+
+function filterProducts(event, category) {
+  const products = document.querySelectorAll('.product-card');
+  const buttons = document.querySelectorAll('.filter-btn');
+  
+  buttons.forEach(btn => btn.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  
+  products.forEach(product => {
+    if (category === 'all' || product.dataset.category === category) {
+      product.style.display = 'block';
+    } else {
+      product.style.display = 'none';
+    }
+  });
+}
+
+function toggleFAQ(button) {
+  const faqItem = button.closest('.faq-item');
+  const answer = button.nextElementSibling;
+  const toggle = button.querySelector('.faq-toggle');
+  
+  faqItem.classList.toggle('open');
+  answer.classList.toggle('active');
+  toggle.textContent = answer.classList.contains('active') ? '−' : '+';
+}
+
+// Initialize cart on page load
+updateCartUI();
+</script>
+
+</body>
+</html>

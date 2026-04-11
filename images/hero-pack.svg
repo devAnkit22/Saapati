@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <rect width="500" height="500" rx="40" ry="40" fill="#F8F0E7" />
+  <rect x="80" y="90" width="340" height="320" rx="30" fill="#B22B20" stroke="#8B1D17" stroke-width="12" />
+  <rect x="110" y="120" width="280" height="220" rx="22" fill="#F8E7D4" />
+  <text x="250" y="190" text-anchor="middle" font-family="Georgia, serif" font-size="40" font-weight="700" fill="#B22B20">SAAPATI</text>
+  <text x="250" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#8B1D17">Assam Tea</text>
+  <text x="250" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#8B1D17">Premium Single Origin</text>
+  <path d="M200 320 C220 360 280 360 300 320" fill="none" stroke="#8B1D17" stroke-width="12" stroke-linecap="round" />
+  <circle cx="150" cy="110" r="18" fill="#8B1D17" />
+  <circle cx="350" cy="110" r="18" fill="#8B1D17" />
+</svg>
