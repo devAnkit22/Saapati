@@ -6,9 +6,9 @@
 }
 
 :root {
-  --primary-color: #D4840D;
+  --primary-color: #9A2221;
   --secondary-color: #8B5A2B;
-  --accent-color: #4CAF50;
+  --accent-color: #4F8546;
   --text-dark: #2C2C2C;
   --text-light: #666;
   --bg-light: #F8F6F1;
@@ -64,7 +64,9 @@ h1, h2, h3, h4, h5, h6, button, input, select, textarea {
 }
 
 .logo-image {
-  height: 40px;
+  height: 58px;
+  width: auto;
+  display: block;
 }
 
 .nav-links {
@@ -682,17 +684,45 @@ table tr:hover {
 }
 
 .reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
   gap: 30px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.reviews-grid::-webkit-scrollbar,
+.reviews-grid {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.reviews-grid::-webkit-scrollbar {
+  display: none;
 }
 
 .review-card {
+  flex: 0 0 calc((100% - 60px) / 3);
+  min-width: 280px;
   background-color: white;
   padding: 30px;
   border-radius: 12px;
   border-left: 5px solid var(--primary-color);
   transition: all 0.3s ease;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 992px) {
+  .review-card {
+    flex: 0 0 calc((100% - 30px) / 2);
+  }
+}
+
+@media (max-width: 650px) {
+  .review-card {
+    flex: 0 0 100%;
+  }
 }
 
 .review-card:hover {
