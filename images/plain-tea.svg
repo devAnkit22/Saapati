@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260">
-  <rect width="260" height="260" rx="30" ry="30" fill="#F9F2E8"/>
-  <rect x="32" y="34" width="196" height="192" rx="26" fill="#B22B20"/>
-  <rect x="46" y="48" width="168" height="144" rx="18" fill="#F8E7D4"/>
-  <text x="130" y="108" text-anchor="middle" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#B22B20">Plain Tea</text>
-  <text x="130" y="138" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8B1D17">Assam Black Tea</text>
-  <path d="M150 170 C160 150 130 130 110 150" fill="none" stroke="#8B1D17" stroke-width="10" stroke-linecap="round" />
-  <path d="M120 175 C125 165 140 160 150 170" fill="none" stroke="#8B1D17" stroke-width="8" stroke-linecap="round" />
-</svg>
