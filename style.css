@@ -156,25 +156,31 @@ h1, h2, h3, h4, h5, h6, button, input, select, textarea {
   margin-bottom: 10px;
   font-weight: 800;
   letter-spacing: 3px;
+  color: #E63946;
 }
 
 .tagline {
   font-size: 28px;
   margin-bottom: 20px;
-  font-weight: 300;
-  opacity: 0.95;
+  font-weight: 700;
+  color: #ffffff;
+  opacity: 1;
 }
 
 .subtitle {
   font-size: 18px;
   margin-bottom: 15px;
-  opacity: 0.9;
+  color: #ffffff;
+  font-weight: 600;
+  opacity: 1;
 }
 
 .description {
   font-size: 16px;
   margin-bottom: 30px;
-  opacity: 0.85;
+  color: #ffffff;
+  font-weight: 500;
+  opacity: 1;
   line-height: 1.8;
 }
 
@@ -184,7 +190,7 @@ h1, h2, h3, h4, h5, h6, button, input, select, textarea {
   border: none;
   padding: 15px 40px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -202,7 +208,9 @@ h1, h2, h3, h4, h5, h6, button, input, select, textarea {
 
 .trust-badge {
   font-size: 14px;
-  opacity: 0.9;
+  color: #ffffff;
+  font-weight: 600;
+  opacity: 1;
   display: flex;
   gap: 20px;
 }
@@ -234,6 +242,10 @@ h1, h2, h3, h4, h5, h6, button, input, select, textarea {
 .shop {
   padding: 80px 20px;
   background-color: var(--bg-white);
+}
+
+.shop h2 {
+  color: #9A2221;
 }
 
 .shop h2,
