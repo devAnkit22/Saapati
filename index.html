@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saapati – Authentic Assam Tea Direct from Namrup</title>
+  <title>Saapati – Authentic Assam Tea Direct from Doomdooma</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,41 +17,49 @@
     <div class="logo">
       <img src="images/saapati-logo.svg" alt="Saapati Logo" class="logo-image">
     </div>
-    <nav class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#shop">Shop</a>
-      <a href="#why-saapati">Why Saapati</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#about">About Us</a>
-      <a href="#faq">FAQ</a>
+    <nav class="nav-links" id="nav-links">
+      <a href="#home" onclick="closeMobileMenu()">Home</a>
+      <a href="#shop" onclick="closeMobileMenu()">Shop</a>
+      <a href="#why-saapati" onclick="closeMobileMenu()">Why Saapati</a>
+      <a href="#reviews" onclick="closeMobileMenu()">Reviews</a>
+      <a href="#about" onclick="closeMobileMenu()">About Us</a>
+      <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
     </nav>
-    <div class="cart-icon" onclick="toggleCart()">
-      <span>🛒</span>
-      <span class="cart-count" id="cart-count">0</span>
+    <div class="navbar-actions">
+      <div class="cart-icon" onclick="toggleCart()">
+        <span>?</span>
+        <span class="cart-count" id="cart-count">0</span>
+      </div>
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </div>
 </header>
 
 <!-- Hero Section -->
 <section class="hero" id="home">
-  <div class="hero-video">
-    <video autoplay muted loop playsinline>
-      <source src="videos/IMG_2534.MOV" type="video/quicktime">
-      Your browser does not support the video tag.
-    </video>
-  </div>
+  <div class="hero-background"></div>
   <div class="hero-overlay"></div>
   <div class="container hero-content">
     <div class="hero-text">
-      <h1>Saapati</h1>
-      <p class="tagline">From Assam to Your Cup</p>
-      <p class="subtitle">Pure Assam Tea. Freshly sourced. Authentically crafted.</p>
-      <p class="description">Direct from Namrup gardens. No middlemen. No artificial flavors. Just authentic, fresh chai.</p>
-      <button class="cta-button" onclick="document.getElementById('shop').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
-      <div class="trust-badge">100% Fresh | Farm to Cup | Free Shipping</div>
+      <div class="hero-badges">
+        <span class="badge badge-new">NEW LAUNCH</span>
+        <span class="badge badge-discount">30% OFF FIRST ORDER</span>
+        <span class="badge badge-shipping">FREE SHIPPING</span>
+      </div>
+      <h1>Saapati: Authentic Assam Tea<br>Direct from Gardens</h1>
+      <p class="tagline">From Doomdooma to Your Cup</p>
+      <p class="subtitle">Premium CTC Tea  Farm-Fresh  No Middlemen</p>
+      <p class="description">Experience the real taste of Assam with our freshly sourced chai. Strong aroma, deep color, and authentic flavor that delivers the perfect kadak cup every time.</p>
+      <div class="cta-section">
+        <button class="cta-button" onclick="document.getElementById('shop').scrollIntoView({behavior: 'smooth'})">Shop Now - Save 30%</button>
+      </div>
     </div>
     <div class="hero-image">
-      <img src="images/remvoebg.png" alt="Saapati Assam Tea Package">
+      <img src="images/mockupbg.png" alt="Saapati Assam Tea Package">
     </div>
   </div>
 </section>
@@ -173,8 +181,8 @@
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">🌱</div>
-        <h3>Direct from Namrup</h3>
-        <p>Sourced directly from authentic gardens in Namrup, Assam. No warehousing, no middlemen.</p>
+        <h3>Direct from Doomdooma</h3>
+        <p>Sourced directly from authentic gardens in Doomdooma, Assam. No warehousing, no middlemen.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">⚡</div>
@@ -249,7 +257,7 @@
       <div class="story-text">
         <div class="story-block">
           <h3>We grew up with real chai.</h3>
-          <p>I grew up in Namrup, Assam — surrounded by tea gardens where chai is part of everyday life. <strong>Strong aroma, deep color, and full-bodied taste.</strong></p>
+          <p>I grew up in Doomdooma, Assam — surrounded by tea gardens where chai is part of everyday life. <strong>Strong aroma, deep color, and full-bodied taste.</strong></p>
         </div>
         <div class="story-block">
           <h3>Chai had lost its soul.</h3>
@@ -282,51 +290,51 @@
 <!-- Comparison Section -->
 <section class="comparison">
   <div class="container">
-    <h2>Saapati vs Other Brands</h2>
+    <h2>Why Saapati Wins: The Ultimate Tea Comparison</h2>
     <div class="comparison-table">
       <table>
         <thead>
           <tr>
-            <th>Feature</th>
-            <th>Other Brands</th>
-            <th>Saapati</th>
+            <th>Premium Feature</th>
+            <th>Ordinary Brands</th>
+            <th>Saapati Premium</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Freshness</td>
-            <td>❌ Months old stock</td>
-            <td>✅ Fresh from gardens</td>
+            <td>Garden Freshness</td>
+            <td>Warehoused for months</td>
+            <td>Sealed at source, delivered fresh</td>
           </tr>
           <tr>
-            <td>Cup Strength</td>
-            <td>❌ Weak, needs more tea</td>
-            <td>✅ Strong flavor per cup</td>
+            <td>Authentic Strength</td>
+            <td>Diluted flavor, weak brew</td>
+            <td>Kadak Assam strength, rich color</td>
           </tr>
           <tr>
-            <td>Cost per Cup</td>
-            <td>❌ ₹2-3 per cup</td>
-            <td>✅ ₹1-1.50 per cup</td>
+            <td>Value for Money</td>
+            <td>Higher cost per serving</td>
+            <td>35% more cups, unbeatable value</td>
           </tr>
           <tr>
-            <td>Artificial Additives</td>
-            <td>❌ Contains artificial flavors</td>
-            <td>✅ 100% pure Assam</td>
+            <td>Pure Ingredients</td>
+            <td>Artificial flavors & additives</td>
+            <td>100% natural Assam CTC tea</td>
           </tr>
           <tr>
-            <td>Cups per Package</td>
-            <td>❌ 50-70 cups</td>
-            <td>✅ 150+ cups</td>
+            <td>Package Efficiency</td>
+            <td>Limited servings per pack</td>
+            <td>150+ premium cups per package</td>
           </tr>
           <tr>
-            <td>Shelf Life</td>
-            <td>❌ Stale, loses quality</td>
-            <td>✅ Stays fresh longer</td>
+            <td>Lasting Freshness</td>
+            <td>Loses aroma quickly</td>
+            <td>Extended freshness, sealed quality</td>
           </tr>
           <tr>
-            <td>Direct from Gardens</td>
-            <td>❌ Multiple middlemen</td>
-            <td>✅ Farm to Cup</td>
+            <td>Supply Chain</td>
+            <td>Multiple distributors, markups</td>
+            <td>Direct from Doomdooma gardens</td>
           </tr>
         </tbody>
       </table>
@@ -625,6 +633,43 @@ function toggleFAQ(button) {
   answer.classList.toggle('active');
   toggle.textContent = answer.classList.contains('active') ? '−' : '+';
 }
+
+// Mobile menu functions
+function toggleMobileMenu() {
+  const navLinks = document.getElementById('nav-links');
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  
+  navLinks.classList.toggle('active');
+  menuToggle.classList.toggle('active');
+  
+  // Prevent body scroll when menu is open
+  if (navLinks.classList.contains('active')) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+}
+
+function closeMobileMenu() {
+  const navLinks = document.getElementById('nav-links');
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  
+  navLinks.classList.remove('active');
+  menuToggle.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+  const navLinks = document.getElementById('nav-links');
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  
+  if (navLinks.classList.contains('active') && 
+      !navLinks.contains(event.target) && 
+      !menuToggle.contains(event.target)) {
+    closeMobileMenu();
+  }
+});
 
 // Initialize cart on page load
 updateCartUI();
