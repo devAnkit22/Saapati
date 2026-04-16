@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F8F0E7"/>
+      <stop offset="100%" stop-color="#E6D2BC"/>
+    </linearGradient>
+  </defs>
+  <rect width="520" height="520" rx="40" fill="url(#bg)"/>
+  <circle cx="260" cy="180" r="90" fill="#C68B67"/>
+  <path d="M160 430 C160 340 360 340 360 430" fill="#B78B64"/>
+  <path d="M190 170 C190 120 240 90 260 90 C280 90 330 120 330 170" fill="#E3B89D"/>
+  <path d="M190 230 C190 280 330 280 330 230" fill="#D6A07E"/>
+  <path d="M210 130 C210 110 250 95 260 95 C270 95 310 110 310 130" fill="#A55A3A"/>
+  <path d="M180 325 C180 300 340 300 340 325" fill="#C08A6B"/>
+  <text x="260" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#8B1D17">Founder of Saapati</text>
+</svg>
