@@ -505,6 +505,7 @@
   </div>
 </footer>
 
+
 <script>
 let cart = JSON.parse(localStorage.getItem('saapatiCart')) || [];
 
@@ -535,8 +536,10 @@ function addToCart(productName, button) {
   
   localStorage.setItem('saapatiCart', JSON.stringify(cart));
   updateCartUI();
-  alert(`${productName} (${size}) added to cart!`);
   select.value = '';
+  
+  // Auto-open cart for quicker checkout
+  document.getElementById('cart-modal').classList.add('active');
   const card = button.closest('.product-card');
   const priceTag = card.querySelector('.price-tag');
   if (priceTag) priceTag.textContent = 'Starting at ₹' + Number(price).toLocaleString();
