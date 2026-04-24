@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Successful - Saapati</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .success-container {
+      max-width: 600px;
+      margin: 100px auto;
+      padding: 40px;
+      text-align: center;
+      background: linear-gradient(135deg, #FFF9F0, #F0F4F8);
+      border-radius: 16px;
+      border: 2px solid #4F8546;
+    }
+    .success-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+    .success-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: #4F8546;
+      margin-bottom: 16px;
+    }
+    .success-message {
+      font-size: 18px;
+      color: #2C2C2C;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    .order-details {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      text-align: left;
+    }
+    .order-details h3 {
+      color: #9A2221;
+      margin-bottom: 10px;
+    }
+    .order-details p {
+      margin: 5px 0;
+      color: #666;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #9A2221, #4F8546);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(212, 132, 13, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="success-container">
+    <div class="success-icon">✅</div>
+    <h1 class="success-title">Payment Successful!</h1>
+    <p class="success-message">
+      Thank you for your order! Your payment has been processed successfully. We'll start preparing your premium Assam tea for delivery.
+    </p>
+    
+    <div class="order-details">
+      <h3>Order Confirmation</h3>
+      <p><strong>Order ID:</strong> <span id="orderId">Loading...</span></p>
+      <p><strong>Payment Status:</strong> Success</p>
+      <p><strong>Estimated Delivery:</strong> 3-5 business days</p>
+      <p><strong>Shipping:</strong> Free across India</p>
+    </div>
+    
+    <div class="order-details">
+      <h3>What's Next?</h3>
+      <p>• You'll receive an order confirmation email shortly</p>
+      <p>• We'll send tracking details once your order ships</p>
+      <p>• For any queries, contact us at info@saapati.in</p>
+    </div>
+    
+    <a href="index.html" class="btn-primary">Continue Shopping</a>
+  </div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const txnId = params.get("merchantOrderId");
+
+  const orderIdEl = document.getElementById("orderId");
+  const statusEl = document.querySelector(".success-title");
+  const messageEl = document.querySelector(".success-message");
+
+  if (!txnId) {
+    statusEl.innerText = "Invalid Payment";
+    messageEl.innerText = "Transaction ID missing.";
+  } else {
+    orderIdEl.innerText = txnId;
+
+    fetch(`http://localhost:3000/check-status/${txnId}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log("STATUS:", data);
+
+        if (data.state === "COMPLETED") {
+          statusEl.innerText = "Payment Successful!";
+          messageEl.innerText = "Thank you! Your order is confirmed.";
+          
+          // Clear cart only on success
+          localStorage.removeItem('saapatiCart');
+
+        } else if (data.state === "FAILED") {
+          statusEl.innerText = "Payment Failed ❌";
+          messageEl.innerText = "Your payment was not successful. Please try again.";
+        } else {
+          statusEl.innerText = "Payment Pending ⏳";
+          messageEl.innerText = "We are verifying your payment. Please wait.";
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        statusEl.innerText = "Error verifying payment";
+        messageEl.innerText = "Please contact support.";
+      });
+  }
+</script>
+</body>
+</html>

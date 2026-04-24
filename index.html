@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="/images/favicon.png">
 </head>
 <body>
 
@@ -69,7 +70,7 @@
 <section class="shop" id="shop">
   <div class="container">
     <h2>Our Flavours</h2>
-    <p class="section-subtitle">Authentic Assam tea blends crafted for every chai lover</p>
+    <p class="section-subtitle">Authentic Assam Tea Blends for Every Chai Lover</p>
     
     <!-- Filter Section -->
     <div class="filter-section">
@@ -85,12 +86,12 @@
         <div class="product-image">
           <img src="images/adrakNew.png" alt="Adrak Chai">
         </div>
-        <h3>Adrak Chai</h3>
+        <h3>Adrak Chai (Ginger Tea)</h3>
         <p class="product-subtitle">Bold ginger Assam blend</p>
         <div class="product-features">
-          <span>Refreshing ginger kick</span>
-          <span>Warm & invigorating</span>
-          <span>Fresh Assam leaves</span>
+          <span>Made with fresh ginger tea notes</span>
+          <span>Strong, kadak flavor for tea lovers</span>
+          <span>Authentic Indian ginger tea taste</span>
         </div>
         <div class="price-tag">Starting at ₹259</div>
         <div class="product-sizes">
@@ -100,7 +101,7 @@
             <option value="750g-519">750g - ₹519</option>
           </select>
         </div>
-        <button class="add-to-cart" onclick="addToCart('Adrak Chai', this)">Add to Cart</button>
+        <button class="add-to-cart" onclick="addToCart('Adrak Chai (Ginger Tea)', this)">Add to Cart</button>
       </div>
 
       <!-- Elaichi Chai -->
@@ -109,7 +110,7 @@
           <img src="images/elachiFinal.png" alt="Elaichi Chai">
         </div>
         <h3>Elaichi Chai</h3>
-        <p class="product-subtitle">Aromatic cardamom Assam</p>
+        <p class="product-subtitle">Aromatic Cardamom Assam Tea</p>
         <div class="product-features">
           <span>Natural cardamom notes</span>
           <span>Soothing aroma</span>
@@ -132,11 +133,11 @@
           <img src="images/masalaNew.png" alt="Masala Chai">
         </div>
         <h3>Masala Chai</h3>
-        <p class="product-subtitle">Festive Assam spice blend</p>
+        <p class="product-subtitle">Rich Indian Spice Blend Tea</p>
         <div class="product-features">
-          <span>5 premium spices</span>
-          <span>Deep, rich flavor</span>
-          <span>Warming chai comfort</span>
+          <span>Blend of 5 premium spices</span>
+          <span>Deep, strong, comforting taste</span>
+          <span>Ideal for lovers of strong chai tea</span>
         </div>
         <div class="price-tag">Starting at ₹329</div>
         <div class="product-sizes">
@@ -155,10 +156,10 @@
           <img src="images/remvoebg.png" alt="Plain Tea">
         </div>
         <h3>Plain Tea</h3>
-        <p class="product-subtitle">Pure Assam black tea</p>
+        <p class="product-subtitle">Pure Assam Black Tea – Strong & Fresh</p>
         <div class="product-features">
-          <span>Strong & clear cup</span>
-          <span>Everyday Assam classic</span>
+          <span>100% pure Assam tea</span>
+          <span>Strong color, bold taste</span>
           <span>Fresh leaf quality</span>
         </div>
         <div class="price-tag">Starting at ₹229</div>
@@ -183,7 +184,7 @@
       <div class="feature-card">
         <div class="feature-icon">🌱</div>
         <h3>Direct from Assam</h3>
-        <p>Sourced directly from authentic gardens in Doomdooma, Assam. No warehousing, no middlemen.</p>
+        <p>Freshly sourced from Doomdooma gardens. No middlemen. If you want to buy Assam tea online, this is the closest you’ll get to the source..</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">⚡</div>
@@ -192,8 +193,8 @@
       </div>
       <div class="feature-card">
         <div class="feature-icon">💰</div>
-        <h3>35% More Cups</h3>
-        <p>Saapati tea is so strong you need 35% less per cup. One package lasts longer.</p>
+        <h3>30% More Cups</h3>
+        <p>Saapati tea is so strong you need 30% less per cup. One package lasts longer.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">✨</div>
@@ -202,8 +203,8 @@
       </div>
       <div class="feature-card">
         <div class="feature-icon">🚚</div>
-        <h3>Free Shipping</h3>
-        <p>Free delivery across India on all orders. Cash on delivery available.</p>
+        <h3>Free Shipping Across India</h3>
+        <p>Order your favorite ginger tea online and get it delivered to your doorstep. Cash on delivery available.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🏆</div>
@@ -227,7 +228,7 @@
       </div>
       <div class="step">
         <div class="step-number">2</div>
-        <h3>Add Tea</h3>
+        <h3>Add pure Assam tea leaves</h3>
         <p>Add half a teaspoon (2.5g) of Saapati chai to the boiling water.</p>
       </div>
       <div class="step">
@@ -253,7 +254,7 @@
 <section class="story" id="about">
   <div class="container">
     <div class="story-tagline">FROM ASSAM, WITH HONESTY</div>
-    <h2>Hey!! Ever tasted tea made by fresh tea leaves?</h2>
+    <h2>Hey!! Ever tasted tea made by fresh tea leaves instead of dusty blends?</h2>
     <div class="story-content">
       <div class="story-image">
         <img src="images/founderNew.PNG" alt="Founder of Saapati">
@@ -596,12 +597,37 @@ function toggleCart() {
   document.getElementById('cart-modal').classList.toggle('active');
 }
 
-function checkout() {
+async function checkout() {
   if (cart.length === 0) {
     alert('Your cart is empty!');
     return;
   }
-  alert('Thank you for your order! Checkout functionality coming soon.');
+
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  try {
+    const response = await fetch('http://localhost:3000/create-payment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ amount: total })
+    });
+
+    const data = await response.json();
+    console.log("FRONTEND RESPONSE:", data);
+
+    if (data.redirectUrl) {
+      window.location.href = data.redirectUrl;
+    } else {
+      console.error("Invalid backend response:", data);
+      alert('Payment initiation failed. Please try again.');
+    }
+
+  } catch (error) {
+    console.error('Payment error:', error);
+    alert('Payment service unavailable. Please try again later.');
+  }
 }
 
 function filterProducts(event, category) {
