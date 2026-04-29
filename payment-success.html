@@ -94,45 +94,29 @@
   </div>
 
 <script>
+  
   const params = new URLSearchParams(window.location.search);
-  const txnId = params.get("merchantOrderId");
 
-  const orderIdEl = document.getElementById("orderId");
-  const statusEl = document.querySelector(".success-title");
-  const messageEl = document.querySelector(".success-message");
+const isRedirect = params.get("attributes[fastrr_redirect]");
+const uuid = params.get("attributes[fastrr_redirect_uuid");
 
-  if (!txnId) {
-    statusEl.innerText = "Invalid Payment";
-    messageEl.innerText = "Transaction ID missing.";
-  } else {
-    orderIdEl.innerText = txnId;
+const orderIdEl = document.getElementById("orderId");
+const statusEl = document.querySelector(".success-title");
+const messageEl = document.querySelector(".success-message");
 
-    fetch(`http://localhost:3000/check-status/${txnId}`)
-      .then(res => res.json())
-      .then(data => {
-        console.log("STATUS:", data);
+if (isRedirect === "1") {
+  statusEl.innerText = "Order Placed 🎉";
+  messageEl.innerText = "Your order has been placed successfully.";
 
-        if (data.state === "COMPLETED") {
-          statusEl.innerText = "Payment Successful!";
-          messageEl.innerText = "Thank you! Your order is confirmed.";
-          
-          // Clear cart only on success
-          localStorage.removeItem('saapatiCart');
+  orderIdEl.innerText = uuid || "SR-" + Date.now();
 
-        } else if (data.state === "FAILED") {
-          statusEl.innerText = "Payment Failed ❌";
-          messageEl.innerText = "Your payment was not successful. Please try again.";
-        } else {
-          statusEl.innerText = "Payment Pending ⏳";
-          messageEl.innerText = "We are verifying your payment. Please wait.";
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        statusEl.innerText = "Error verifying payment";
-        messageEl.innerText = "Please contact support.";
-      });
-  }
+  // ✅ Clear cart
+  localStorage.removeItem('saapatiCart');
+
+} else {
+  statusEl.innerText = "Something went wrong ❌";
+  messageEl.innerText = "Unable to verify order.";
+}
 </script>
 </body>
 </html>

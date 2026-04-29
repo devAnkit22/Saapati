@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="/images/favicon.png">
+  <link rel="stylesheet" href="https://checkout-ui.shiprocket.com/assets/styles/shopify.css">
 </head>
 <body>
 
@@ -442,7 +443,7 @@
         <strong>Total:</strong>
         <strong id="cart-total">₹0</strong>
       </div>
-      <button class="checkout-button" onclick="checkout()">Proceed to Checkout</button>
+      <button class="checkout-button" onclick="checkout(event)">Proceed to Checkout</button>
       <p class="free-shipping">Free shipping on all orders</p>
     </div>
   </div>
@@ -512,41 +513,78 @@
 <script>
 let cart = JSON.parse(localStorage.getItem('saapatiCart')) || [];
 
-function addToCart(productName, button) {
-  const select = button.previousElementSibling.querySelector('.size-select');
-  const sizeValue = select.value;
-  
-  if (!sizeValue) {
-    alert('Please select a size');
+let selectedProduct = null;
+
+function addToCart(productName, btn) {
+  const card = btn.closest('.product-card');
+
+  const sizeSelect = card.querySelector('.size-select');
+  const selected = sizeSelect.value;
+
+  if (!selected) {
+    alert("Please select size");
     return;
   }
-  
-  const [size, price] = sizeValue.split('-');
-  const priceNum = parseInt(price);
-  
+
+  const [size, price] = selected.split('-');
+
+  const image = card.querySelector('img').src;
+
   const existingItem = cart.find(item => item.name === productName && item.size === size);
-  
+
   if (existingItem) {
     existingItem.quantity++;
   } else {
     cart.push({
       name: productName,
       size: size,
-      price: priceNum,
+      price: Number(price),
+      image,
       quantity: 1
     });
   }
-  
+
   localStorage.setItem('saapatiCart', JSON.stringify(cart));
   updateCartUI();
-  select.value = '';
-  
+
   // Auto-open cart for quicker checkout
   document.getElementById('cart-modal').classList.add('active');
-  const card = button.closest('.product-card');
-  const priceTag = card.querySelector('.price-tag');
-  if (priceTag) priceTag.textContent = 'Starting at ₹' + Number(price).toLocaleString();
 }
+// function addToCart(productName, button) {
+//   const select = button.previousElementSibling.querySelector('.size-select');
+//   const sizeValue = select.value;
+  
+//   if (!sizeValue) {
+//     alert('Please select a size');
+//     return;
+//   }
+  
+//   const [size, price] = sizeValue.split('-');
+//   const priceNum = parseInt(price);
+  
+//   const existingItem = cart.find(item => item.name === productName && item.size === size);
+  
+//   if (existingItem) {
+//     existingItem.quantity++;
+//   } else {
+//     cart.push({
+//       name: productName,
+//       size: size,
+//       price: priceNum,
+//       quantity: 1
+//     });
+//   }
+  
+//   localStorage.setItem('saapatiCart', JSON.stringify(cart));
+//   updateCartUI();
+//   select.value = '';
+  
+//   // Auto-open cart for quicker checkout
+//   document.getElementById('cart-modal').classList.add('active');
+//   const card = button.closest('.product-card');
+//   const priceTag = card.querySelector('.price-tag');
+//   if (priceTag) priceTag.textContent = 'Starting at ₹' + Number(price).toLocaleString();
+// }
 
 function updatePrice(select) {
   const priceTag = select.closest('.product-card').querySelector('.price-tag');
@@ -597,38 +635,53 @@ function toggleCart() {
   document.getElementById('cart-modal').classList.toggle('active');
 }
 
-async function checkout() {
+async function checkout(event) {
+  if (event) event.preventDefault();
+
   if (cart.length === 0) {
-    alert('Your cart is empty!');
+    alert("Your cart is empty");
     return;
   }
 
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
-
   try {
-    const response = await fetch('http://localhost:3000/create-payment', {
+    // Use first item from cart for token generation
+    const cartItem = cart[0];
+    
+    const res = await fetch('https://simply-expire-monument.ngrok-free.dev/generate-token', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ amount: total })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(cartItem)
     });
 
-    const data = await response.json();
-    console.log("FRONTEND RESPONSE:", data);
+    const data = await res.json();
 
-    if (data.redirectUrl) {
-      window.location.href = data.redirectUrl;
-    } else {
-      console.error("Invalid backend response:", data);
-      alert('Payment initiation failed. Please try again.');
+    console.log("FULL DATA:", data);   
+
+    const token = data.token;
+
+    console.log("TOKEN:", token);      
+
+    console.log("Backend response:", data);
+
+    if (!data.success || !data.token) {
+      alert("Token failed");
+      return;
     }
 
-  } catch (error) {
-    console.error('Payment error:', error);
-    alert('Payment service unavailable. Please try again later.');
+    console.log("Opening Shiprocket checkout with token:", token);
+
+    // ✅ SHIPROCKET HEADLESS CHECKOUT (PROPER IMPLEMENTATION)
+    HeadlessCheckout.addToCart(event, token, {
+      fallbackUrl: "http://127.0.0.1:5500/payment-success.html"
+    });
+
+  } catch (err) {
+    console.error("Checkout error:", err);
+    alert("Checkout failed");
   }
 }
+
+// async function checkout() {//}
 
 function filterProducts(event, category) {
   const products = document.querySelectorAll('.product-card');
@@ -697,5 +750,8 @@ document.addEventListener('click', function(event) {
 updateCartUI();
 </script>
 
+<!-- Shiprocket Checkout Integration -->
+<input type="hidden" value="saapati.in" id="sellerDomain"/>
+<script src="https://checkout-ui.shiprocket.com/assets/js/channels/shopify.js"></script>
 </body>
 </html>
